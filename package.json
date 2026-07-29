@@ -1,0 +1,9 @@
+{
+  "name": "fuweb-creator-hub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official FUWEB Personal Brand & VIP Creator Hub",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}

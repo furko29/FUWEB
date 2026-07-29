@@ -1,0 +1,249 @@
+/* Dopamine UX - Design System & Custom Animations */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap');
+
+:root {
+  --bg-dark: #07090E;
+  --bg-card: rgba(18, 22, 34, 0.75);
+  --purple-glow: #8B5CF6;
+  --pink-glow: #EC4899;
+  --cyan-glow: #06B6D4;
+  --gold-glow: #F59E0B;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--bg-dark);
+  color: #F3F4F6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Interactive Background Canvas */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Ambient Background Mesh */
+.ambient-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 15% 20%, rgba(139, 92, 246, 0.18) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 90%, rgba(245, 158, 11, 0.10) 0%, transparent 40%);
+}
+
+/* Floating XP Gain Badge Animation */
+.floating-xp {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  color: #F59E0B;
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.8), 0 0 20px rgba(236, 72, 153, 0.6);
+  animation: floatUpAndFade 1.2s ease-out forwards;
+}
+
+@keyframes floatUpAndFade {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(0.8) rotate(-4deg);
+  }
+  30% {
+    transform: translate(-50%, -30px) scale(1.2) rotate(2deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -80px) scale(1) rotate(0deg);
+  }
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(15, 20, 32, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.3);
+}
+
+/* Avatar Gradient Aura Animation */
+.aura-container {
+  position: relative;
+}
+
+.aura-ring-1 {
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  background: linear-gradient(45deg, #8B5CF6, #EC4899, #06B6D4, #F59E0B);
+  filter: blur(12px);
+  opacity: 0.85;
+  animation: rotateAura 6s linear infinite;
+}
+
+.aura-ring-2 {
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: linear-gradient(225deg, #06B6D4, #F59E0B, #8B5CF6, #EC4899);
+  filter: blur(4px);
+  animation: rotateAura 4s linear infinite reverse;
+}
+
+@keyframes rotateAura {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Text Gradient Animations */
+.gradient-text-electric {
+  background: linear-gradient(135deg, #A78BFA 0%, #F472B6 50%, #38BDF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #FDE047 0%, #F59E0B 50%, #D97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Pulsing Live Badge */
+.pulse-live {
+  position: relative;
+  padding-left: 28px !important;
+}
+
+.pulse-live::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #EF4444;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 10px #EF4444;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0% { transform: translateY(-50%) scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: translateY(-50%) scale(1.25); opacity: 1; box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  100% { transform: translateY(-50%) scale(0.95); opacity: 0.8; box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Holographic VIP Card Sheen */
+.holo-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(139, 92, 246, 0.18), rgba(6, 182, 212, 0.18));
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.holo-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: holoSheen 4.5s infinite;
+}
+
+@keyframes holoSheen {
+  0% { transform: translate(-100%, -100%) rotate(30deg); }
+  20% { transform: translate(100%, 100%) rotate(30deg); }
+  100% { transform: translate(100%, 100%) rotate(30deg); }
+}
+
+/* Shimmer Buttons */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.6s ease;
+}
+
+.btn-shimmer:hover::before {
+  left: 100%;
+}
+
+/* Wheel Spin Animation */
+.spinning-wheel {
+  animation: spinWheel 3s cubic-bezier(0.15, 0.85, 0.35, 1.05) forwards;
+}
+
+@keyframes spinWheel {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(1440deg); }
+}
+
+/* Live Chat Scrollbar */
+.chat-scroll {
+  scroll-behavior: smooth;
+}
+.chat-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.chat-scroll::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.4);
+  border-radius: 4px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #07090E;
+}
+::-webkit-scrollbar-thumb {
+  background: #1F2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8B5CF6;
+}
